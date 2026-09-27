@@ -1,7 +1,5 @@
 from django import forms
-
 from .models import Resume
-
 
 class Resumeform(forms.ModelForm):
     
