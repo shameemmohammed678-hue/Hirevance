@@ -243,8 +243,20 @@
         <div class="rec-card">
 
             <div>
-                {% if attempt.mock_test.icon %}
-                    <img src="{{ attempt.mock_test.icon.url }}" alt="{{ attempt.mock_test.title }}">
+                {% if attempt.mock_test.title == "Python Mock Test" %}
+                <img src="{% static 'images/py_icon.png' %}" alt="Python Mock Test">
+
+                {% elif attempt.mock_test.title == "SQL Mock Test" %}
+                <img src="{% static 'images/sql_icon.png' %}" alt="SQL Mock Test">
+
+                {% elif attempt.mock_test.title == "Java Mock Test" %}
+                <img src="{% static 'images/java.png' %}" alt="Java Mock Test">
+
+                {% elif attempt.mock_test.title == "Web Technologies Mock Test" %}
+                <img src="{% static 'images/webtech.png' %}" alt="Web Technologies Mock Test">
+
+                {% elif attempt.mock_test.title == "HR Mock Test" %}
+                <img src="{% static 'images/hr_icon.png' %}" alt="HR Mock Test">
                 {% endif %}
             </div>
 

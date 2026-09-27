@@ -1,12 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 # Create your models here.
 
 class Resume(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    resume = models.FileField(upload_to='resume/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    resume = models.FileField(
+        upload_to='resume/',
+        storage=RawMediaCloudinaryStorage()
+    )
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username
