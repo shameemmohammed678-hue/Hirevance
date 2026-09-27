@@ -31,9 +31,21 @@
         <div class="test-card">
 
             <div class="test-icon">
-                {% if test.icon %}
-                    <img src="{{ test.icon.url }}" alt="{{ test.title }}">
-                {% endif %}
+                     {% if test.title == "Python Mock Test" %}
+                    <img src="{% static 'images/py_icon.png' %}" alt="Python Mock Test">
+
+                    {% elif test.title == "SQL Mock Test" %}
+                    <img src="{% static 'images/sql_icon.png' %}" alt="SQL Mock Test">
+
+                    {% elif test.title == "Java Mock Test" %}
+                    <img src="{% static 'images/java.png' %}" alt="Java Mock Test">
+
+                    {% elif test.title == "Web Technologies Mock Test" %}
+                        <img src="{% static 'images/webtech.png' %}" alt="Web Technologies Mock Test">
+
+                    {% elif test.title == "HR Mock Test" %}
+                         <img src="{% static 'images/hr_icon.png' %}" alt="HR Mock Test">
+                    {% endif %}
             </div>
 
             <div class="test-content">
