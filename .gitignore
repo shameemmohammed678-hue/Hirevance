@@ -4,3 +4,9 @@ __pycache__/
 .env
 db.sqlite3
 media/
+isrgrootx1.pem
+staticfiles/
+
+
+hirevance_backup.sql
+hirevance_data.sql

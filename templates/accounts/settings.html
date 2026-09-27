@@ -1,0 +1,99 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block title %}Settings - Hirevance{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+<div class="settings-page">
+    
+    <div id="settings-heading">
+        <h1>Settings</h1>
+    </div>
+        
+<div class="settings-section">
+    
+
+    <div class="settings-section-header">
+        <h2>Account Information</h2>
+        <p>Your basic account details</p>
+    </div>
+
+    <div class="account-info">
+
+        <div class="account-item">
+            <span class="account-label">Username</span>
+            <span class="account-value">{{ user.username }}</span>
+        </div>
+
+        <div class="account-item">
+            <span class="account-label">Email</span>
+            <span class="account-value">{{ user.email }}</span>
+        </div>
+
+        <div class="account-item">
+            <span class="account-label">Date Joined</span>
+            <span class="account-value">{{ user.date_joined|date:"d M Y" }}</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="settings-section">
+
+    <div class="settings-section-header">
+        <h2>Security</h2>
+        <p>Manage your accounts security</p>
+    </div>
+
+    <div class="settings-action">
+
+        <div class="password-info">
+            <h3>Password</h3>
+            <p>Change your account password</p>
+        </div>
+
+        <div class="password-btn">
+            <a href="{% url 'change_password' %}">Change password</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="settings-section">
+
+    <div class="settings-section-header">
+        <h2>Profile</h2>
+    </div>
+
+    <div class="settings-action">
+
+        <div class="password-info">
+            <p>
+                Manage your profile information, skills,
+                education, and profile picture.
+            </p>
+        </div>
+
+        <div class="password-btn">
+            <a href="{% url 'change_profile' %}">View Profile</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

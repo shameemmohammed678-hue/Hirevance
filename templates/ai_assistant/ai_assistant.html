@@ -1,0 +1,105 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/ai_assistant.css' %}">
+
+<div class="AI-container">
+    
+<div class="AI-header">
+        <h1>HIREVANCE AI</h1>
+        <p>Hello {{request.user.username}} what's on your mind</p>
+</div>
+
+<div class="AI-body">
+    <div class="response-area" id="response-area">
+        
+        <div id="ai-loading" class="ai-loading">
+                HIREVANCE AI is thinking...
+        </div>
+
+    </div>
+
+    <div class="request-box">
+        <input type="text" name="" id="ai-request" placeholder="Share your thoughts here">
+        <button type="button" id="ai-request-button">Ask</button>
+    </div>
+</div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+
+const input = document.getElementById('ai-request');
+const button = document.getElementById('ai-request-button');
+const responseArea = document.getElementById('response-area');
+const loading = document.getElementById('ai-loading');
+
+button.addEventListener('click', function () {
+
+    const question = input.value.trim();
+
+    if (question === '') {
+        return;
+    }
+
+    // Display user message
+    const userMessage = document.createElement('div');
+
+    userMessage.classList.add('user-message');
+    userMessage.textContent = question;
+
+    responseArea.appendChild(userMessage);
+
+    loading.style.display = 'block';
+    button.disabled = true;
+
+    // Send question to Django
+    fetch("{% url 'ask-ai' %}", {
+
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+
+        body: `question=${encodeURIComponent(question)}`
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+        
+        loading.style.display = 'none';
+        button.disabled = false;
+
+        const aiMessage = document.createElement('div');
+
+        aiMessage.classList.add('ai-message');
+
+        aiMessage.innerHTML = marked.parse(data.response);
+
+        responseArea.appendChild(aiMessage);
+
+        responseArea.scrollTop = responseArea.scrollHeight;
+
+    });
+
+    input.value = '';
+
+});
+input.addEventListener('keydown',function(event){
+
+    if(event.key==='Enter'){
+        event.preventDefault()
+        button.click()
+    }
+})
+
+</script>
+
+{% endblock %}

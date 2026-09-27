@@ -1,0 +1,51 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/question.css' %}">
+
+<div class="questions-page">
+
+    <div class="questions-head">
+        <h2>Bookmarked Questions</h2>
+        <p>Questions you saved for later practice</p>
+    </div>
+
+    <div class="questions-container">
+
+        {% for bookmark in bookmarks %}
+
+            <div class="question-card">
+
+                <div class="question-top">
+
+                    <span class="question-category">
+                        {{ bookmark.question.category.name }}
+                    </span>
+
+                    <span class="question-difficulty">
+                        {{ bookmark.question.difficulty }}
+                    </span>
+
+                </div>
+
+                <a href="{% url 'question-detail' bookmark.question.id %}">
+                    <h3>{{ bookmark.question.question_text }}</h3>
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <div class="no-questions">
+                <p>You haven't bookmarked any questions yet.</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

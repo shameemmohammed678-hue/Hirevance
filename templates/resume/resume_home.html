@@ -1,0 +1,81 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/resume.css' %}">
+
+
+<div class="resume-head">
+    <h2>My Resume</h2>
+    <p>Manage your uploaded resume</p>
+</div>
+
+<div class="resume-holder">
+
+    <div class="resume-main-card">
+
+        <div class="resume-file-info">
+
+            <div class="resume-file-icon">
+                📄
+            </div>
+
+            <div>
+                <h3>{{ resume.resume.name|cut:"resume/" }}</h3>
+                <p>Your current resume</p>
+            </div>
+
+        </div>
+
+        <div class="resume-actions">
+
+            <a href="{{ resume.resume.url }}" target="_blank">
+                View Resume
+            </a>
+
+            <a href="{{ resume.resume.url }}" download>
+                Download
+            </a>
+
+            <a href="{% url 'resume-replace' %}">
+                Replace
+            </a>
+
+            <a href="{% url 'resume-delete' %}"
+               onclick="return confirm('Are you sure you want to delete your resume?');">
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="resume-overview">
+
+        <h3>Resume Overview</h3>
+
+        <div class="overview-item">
+            <span>Status</span>
+            <strong>Uploaded</strong>
+        </div>
+
+        <div class="overview-item">
+            <span>Uploaded On</span>
+            <strong>{{ resume.uploaded_at|date:"d M Y" }}</strong>
+        </div>
+
+        <div class="overview-item">
+            <span>Analysis</span>
+            <strong>Available</strong>
+        </div>
+
+        <a href="{% url 'resume-analyze' %}" class="analysis-btn">
+            Analyze Resume
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}

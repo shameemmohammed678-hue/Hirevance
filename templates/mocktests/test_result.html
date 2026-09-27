@@ -1,0 +1,73 @@
+{% extends 'mocktests/test_base.html' %}
+
+{% block title %}
+Test Result
+{% endblock %}
+
+{% block content %}
+
+<div class="result-container">
+
+    <div class="result-header">
+        <h1>Test Completed!</h1>
+        <p>{{ attempt.mock_test.title }}</p>
+    </div>
+
+    <div class="result-card">
+
+        <div class="score-section">
+            <span>Your Score</span>
+            <strong>{{ attempt.score }}%</strong>
+        </div>
+
+        <div class="result-stats">
+
+            <div class="result-stat">
+                <span>Correct</span>
+                <strong>{{ correct_answers }}</strong>
+            </div>
+
+            <div class="result-stat">
+                <span>Wrong</span>
+                <strong>{{ wrong_answers }}</strong>
+            </div>
+
+            <div class="result-stat">
+                <span>Unanswered</span>
+                <strong>{{ unanswered }}</strong>
+            </div>
+
+            <div class="result-stat">
+                <span>Total Questions</span>
+                <strong>{{ total_questions }}</strong>
+            </div>
+
+        </div>
+
+        <div class="result-message">
+            {% if attempt.score >= 80 %}
+                Excellent performance! Keep it up. 🎉
+            {% elif attempt.score >= 60 %}
+                Good job! Keep practicing to improve your score. 👍
+            {% elif attempt.score >= 40 %}
+                Not bad! More practice will help you improve. 💪
+            {% else %}
+                Keep practicing. You can definitely improve! 🚀
+            {% endif %}
+        </div>
+
+        <div class="result-actions">
+
+            <a href="{% url 'mock-test' %}">
+                Back to Mock Tests
+            </a>
+            <a href="{% url 'review-answer' attempt.id%}">
+                Review Your Answers
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

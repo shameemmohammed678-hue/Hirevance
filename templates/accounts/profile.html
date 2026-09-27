@@ -1,0 +1,79 @@
+{% extends 'dashboard_base.html' %}       
+{% load static %}
+
+
+        {% block content %}
+        <div class="profile-container">
+
+        <div class="profile-header">
+                <h1>Profile</h1>
+                <p>Manage your personal and academic information </p>
+        </div>
+
+        {% if messages %}
+        <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+        </div>
+        {% endif %}
+
+            
+        <form method="POST" enctype="multipart/form-data" class="profile-form">
+                {% csrf_token %}
+                <div class="profile-group profile-picture-group">
+
+    <label for="id_profile_picture">Profile Picture</label>
+
+    <div class="profile-picture-section">
+
+        <div class="profile-picture-preview">
+            {% if form.instance.profile_picture %}
+                <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture">
+            {% else %}
+                <span>?</span>
+            {% endif %}
+        </div>
+
+       <div class="profile-picture-upload">
+
+    <p>Choose a new profile picture</p>
+
+    <span>JPG or PNG image</span>
+
+    <label for="id_profile_picture" class="change-photo-btn">
+        Change Photo
+    </label>
+
+    {{ form.profile_picture }}
+
+</div>
+
+    </div>
+
+</div>
+                
+                <div class="profile-group">
+                        <label for="id_college">College:</label>
+                        {{form.college}}
+                </div>
+
+                <div class="profile-group">
+                        <label for="id_graduation_year">Graduation year</label>
+                        {{form.graduation_year}}
+                </div>
+
+                <div class="profile-group">
+                        <label for="id_skills">Skills</label>
+                        {{form.skills}}
+                </div>
+
+
+
+                <button type="submit">Save Changes</button>
+        </form>
+
+        </div>
+        {% endblock %}

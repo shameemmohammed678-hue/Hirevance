@@ -1,0 +1,60 @@
+{% extends 'dashboard_base.html' %}       
+{% load static %}
+        {% block content %}
+
+        <div class="test-container">
+
+            <div class="test-header">
+                <h2>Mock Test</h2>
+                <p>Practice with real interview tests</p>
+
+                
+            </div>
+
+            <div class="rule-box">
+                 <h3>Test Instructions</h3>
+                 <ul>
+                     <li>Read each question carefully before selecting your answer.</li>
+                     <li>Each question has only one correct answer.</li>
+                     <li>The test must be completed within the given time limit.</li>
+                     <li>Your test will be automatically submitted when the timer reaches zero.</li>
+                     <li>Make sure to submit the test before leaving the test page.</li>
+                     <li>Do not refresh or close the test page while taking the test.</li>
+                 </ul>
+            </div>
+
+        <div class="test-body">
+        
+        {% for test in mock_tests %}
+        
+
+        <div class="test-card">
+
+            <div class="test-icon">
+                {% if test.icon %}
+                    <img src="{{ test.icon.url }}" alt="{{ test.title }}">
+                {% endif %}
+            </div>
+
+            <div class="test-content">
+                <h2>{{test.title}}</h2>
+                <p>{{test.description}}</p>
+                <p>Total Questions:{{test.question_count}} </p>
+                <p>Duration:{{test.duration}} minutes</p>
+                <p>Difficulty:{{test.difficulty}}</p>
+                <a href="{% url 'start-test' test.id %}">
+                      Start Test
+                </a>
+            </div>
+
+               
+        </div>
+         {% empty %}
+        <p> No mock test found </p>
+        
+        {% endfor %}
+    </div>
+
+        </div>
+
+        {% endblock %}

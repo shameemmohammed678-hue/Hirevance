@@ -1,0 +1,64 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/resume.css' %}">
+
+<div class="resume-head">
+    <h2>Resume Analysis</h2>
+    <p>Review your resume analysis and improve your profile</p>
+</div>
+
+<div class="analysis-container">
+
+    <!-- ATS SCORE -->
+    <div class="analysis-card">
+        <h3>ATS Score</h3>
+        <div class="score">
+            {{ analysis.score }}/100
+        </div>
+    </div>
+
+    <!-- DETECTED SKILLS -->
+    <div class="analysis-card">
+        <h3>Detected Skills</h3>
+
+        <div class="skills-list">
+            {% for skill in skills %}
+                <span>{{ skill }}</span>
+            {% empty %}
+                <p>No skills detected.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- RESUME SECTIONS -->
+    <div class="analysis-card">
+        <h3>Resume Sections</h3>
+
+        <div class="sections-list">
+            {% for section in sections %}
+                <p>✓ {{ section }}</p>
+            {% empty %}
+                <p>No sections detected.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- SUGGESTIONS -->
+    <div class="analysis-card">
+        <h3>Suggestions</h3>
+
+        <div class="suggestions-list">
+            {% for suggestion in suggestions %}
+                <p>{{ suggestion }}</p>
+            {% empty %}
+                <p>No suggestions available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

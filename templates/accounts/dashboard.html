@@ -1,0 +1,452 @@
+{% extends 'dashboard_base.html' %}       
+{% load static %}
+
+        {% block content %}
+
+             <div class="dashboard-header">
+            
+            <a href="{% url 'change_profile'%}" class="profile-card"> 
+                {% if profile and profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" alt="">
+
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                {% endif %}
+            </a>
+        </div> 
+
+
+            
+        
+            <div class="dashboard-body">
+                <div class="dashboard-headings">
+                <h1>Welcome Back {{request.user.username}} </h1>
+                <p>Ready to continue your interview preparation?</p>
+            </div>
+                <div class="activity-container">
+            <div class="activity-card">
+                <div class="act-icon">
+                    <img src="{%static 'images/dash_test.png'%}" alt="">
+                </div>
+                <div class="act-content">
+                    <h3>Mock Test</h3>
+                    <p>Practice with real interview tests</p>
+                    <a href="{% url 'mock-test'%}">start test</a>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="act-icon">
+                    <img src="{%static 'images/dash_robo.png'%}" alt="">
+                </div>
+                <div class="act-content">
+                    <h3>AI Assistant</h3>
+                    <p>Get AI-powered guidance whenever you need it.</p>
+                    <a href="{% url 'AI-assistant' %}">Hirevance AI</a>
+                </div>
+
+            </div>
+            <div class="activity-card">
+                    <div class="act-icon">
+                         <img src="{%static 'images/dash_res.png'%}" alt="">
+                     </div>
+                <div class="act-content">
+                    <h3>Resume</h3>
+                    <p>Build and with manage your resume</p>
+                    <a href="{% url 'resume-home' %}">manage resume</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="progress-container" id="progress">
+
+            <div class="progress-card" >
+                
+                <!-- Progress heading -->
+    <div class="progress-header">
+        <div class="progress-title">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="18"
+                     height="18"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="m7 16 4-5 3 3 5-7"/>
+                </svg>
+            </span>
+
+            <h3>Your Progress</h3>
+        </div>
+    </div>
+
+
+    <!-- Progress statistics -->
+    <div class="progress-stats">
+
+        <!-- Tests completed -->
+        <div class="progress-stat-card">
+            <div class="stat-icon test-stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+            </div>
+
+            <div class="stat-content">
+                <h3>{{tests_completed}}</h3>
+                <p>Tests Completed</p>
+            </div>
+        </div>
+
+
+        <!-- Average score -->
+        <div class="progress-stat-card">
+            <div class="stat-icon score-stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="m7 16 4-5 3 3 5-7"/>
+                </svg>
+            </div>
+
+            <div class="stat-content">
+                <h3>{{average_score}}%</h3>
+                <p>Average Score</p>
+            </div>
+        </div>
+
+
+        <!-- Questions practiced -->
+        <div class="progress-stat-card">
+            <div class="stat-icon question-stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.1 9a3 3 0 1 1 5.83 1c0 2-3 2-3 4"/>
+                    <path d="M12 17h.01"/>
+                </svg>
+            </div>
+
+            <div class="stat-content">
+                <h3>{{Questions_practised}}</h3>
+                <p>Questions Practiced</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="weekly-activity">
+
+        <div class="weekly-header">
+            <h4 id="activity-title">Weekly Activity</h4>
+
+            <select name="progress-period" id="progress-period">
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+            </select>
+        </div>
+
+
+        <!-- Graph will go here -->
+              <div class="progress-graph">
+                        <div class="graph-y-axis">
+        <span>15</span>
+        <span>10</span>
+        <span>5</span>
+        <span>0</span>
+    </div>
+
+    <div class="graph-area">
+
+        <!-- graph lines/grid -->
+        <div class="graph-grid">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- actual line -->
+        <svg class="activity-line"
+             viewBox="0 0 700 160"
+             preserveAspectRatio="none">
+
+            <path
+                id="activity-path"
+                d=""
+                fill="none"
+                stroke="#4F6FF5"
+                stroke-width="3"
+                stroke-linecap="round">
+            </path>
+
+        </svg>
+
+        <div class="graph-days">
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+            <span>Sun</span>
+        </div>
+
+    </div>
+
+              </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+ <div class="recent-activity">
+
+    <h4>Recent Activity</h4>
+
+    {% for attempt in recent_attempts %}
+
+        <div class="rec-card">
+
+            <div>
+                {% if attempt.mock_test.icon %}
+                    <img src="{{ attempt.mock_test.icon.url }}" alt="{{ attempt.mock_test.title }}">
+                {% endif %}
+            </div>
+
+            <div>
+                <h5>{{ attempt.mock_test.title }}</h5>
+                <p>completed</p>
+            </div>
+
+            <div>
+                <p>{{ attempt.score }}%</p>
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <p>No recent activity yet</p>
+
+    {% endfor %}
+
+</div>
+           
+        </div>
+        <div class="recommendation-container">
+            <h3>Interview Preparation Tips</h3>
+            <div>
+                <div class="recommend-card">
+                <div><img src="{%static 'images/target.png'%}" alt=""></div>
+                <div>
+                    <h4>Practice Regularly</h4>
+                    <p>Build consistency to improve your skills</p>
+                </div>
+            </div>
+            <div class="recommend-card">
+                <div><img src="{%static 'images/mistake.png'%}" alt=""></div>
+                <div>
+                    <h4>Review Your Mistakes</h4>
+                    <p>Analyze and learn from incorrect answers</p>
+                </div>
+
+            </div>
+            <div class="recommend-card">
+                <div><img src="{%static 'images/book.png'%}" alt=""></div>
+                <div>
+                    <h4>Strengthen Your Basics</h4>
+                    <p>Build a strong foundation for advanced topics</p>
+                </div>
+            </div>
+            <div class="recommend-card">
+                <div><img src="{%static 'images/hr_icon.png'%}" alt=""></div>
+                <div>
+                    <h4>Practice Explaining</h4>
+                    <p>Improve your communication skills</p>
+                </div>
+            </div>
+        </div>
+
+            </div>
+            </div>
+
+
+        
+
+    {{ weekly_activity|json_script:"weekly-activity-data" }}
+    {{ monthly_activity|json_script:"monthly-activity-data" }}
+
+    <script>
+
+const weeklyActivity = JSON.parse(
+    document.getElementById('weekly-activity-data').textContent
+);
+
+const monthlyActivity = JSON.parse(
+    document.getElementById('monthly-activity-data').textContent
+);
+
+const path = document.getElementById('activity-path');
+const periodSelect = document.getElementById('progress-period');
+const activityTitle = document.getElementById('activity-title');
+const graphDays = document.querySelector('.graph-days');
+
+const width = 700;
+const height = 160;
+const maxValue = 15;
+
+
+function drawGraph(activityData, labels) {
+
+    const points = activityData.map((value, index) => {
+
+        const x = (width / (activityData.length - 1)) * index;
+
+        const y = height - (value / maxValue) * 140;
+
+        return {
+            x: x,
+            y: y
+        };
+
+    });
+
+
+    let pathData = `M ${points[0].x} ${points[0].y}`;
+
+
+    for (let i = 0; i < points.length - 1; i++) {
+
+        const current = points[i];
+        const next = points[i + 1];
+
+        const middleX = (current.x + next.x) / 2;
+
+        pathData += `
+            C ${middleX} ${current.y},
+              ${middleX} ${next.y},
+              ${next.x} ${next.y}
+        `;
+
+    }
+
+
+    path.setAttribute('d', pathData);
+
+
+    
+
+    graphDays.innerHTML = '';
+
+    labels.forEach(label => {
+
+        const span = document.createElement('span');
+
+        span.textContent = label;
+
+        graphDays.appendChild(span);
+
+    });
+
+}
+
+
+const weeklyLabels = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun'
+];
+
+
+const monthlyLabels = [];
+
+for (let i = 1; i <= monthlyActivity.length; i++) {
+
+    
+    if (
+        i === 1 ||
+        i % 5 === 0 ||
+        i === monthlyActivity.length
+    ) {
+        monthlyLabels.push(i);
+    } else {
+        monthlyLabels.push('');
+    }
+
+}
+
+
+
+drawGraph(weeklyActivity, weeklyLabels);
+
+
+
+
+periodSelect.addEventListener('change', function () {
+
+    if (this.value === 'month') {
+
+        activityTitle.textContent = 'Monthly Activity';
+
+        drawGraph(
+            monthlyActivity,
+            monthlyLabels
+        );
+
+    } else {
+
+        activityTitle.textContent = 'Weekly Activity';
+
+        drawGraph(
+            weeklyActivity,
+            weeklyLabels
+        );
+
+    }
+
+});
+
+</script>
+    
+{% endblock %}
+
+

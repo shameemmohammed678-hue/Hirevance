@@ -1,0 +1,229 @@
+{% extends "base.html"%}
+    {% load static %}
+    {% block content%}
+    <section class="section" id="home">
+        <div class="hero-box">
+            <div class="heading-box">
+                <h1 class="heading">Build Your SKills</h1>
+                <h1 class="heading">Land Your Dream Job</h1>
+            </div>
+            <div class="description-box">
+                <p class="description">Your all-in-one platform to practice interviews,
+                   strengthen your resume, build essential skills,
+                   and prepare with AI-powered guidance.</p>
+            </div>
+            <div class="button-box">
+                <a href="{% url 'dashboard' %}" ><button class="inter-btn primary-btn">Get Started</button></a>
+                <a href="#features"><button class="inter-btn secondary-btn">Explore</button></a>
+            </div>
+        </div>
+        <div class="inter-sec">
+            <div class="inter-box">
+                <div class="demo-header">
+                    <span>✦ Hirevance AI</span>
+                    <span>● Online</span>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-scene active">
+                        <div class="demo-question">
+                        What is a generator function in Python?
+                        </div>
+                    <div class="demo-response">
+                        A generator function uses the <code>yield</code> keyword to produce
+                        values one at a time. It pauses after each value, making it
+                        memory-efficient for large data.
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="features">
+        <div class="feature-head">
+            <h2>
+                Everything You Need<br>
+                To Prepare for Interviews
+            </h2>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card" id="feature-card-1">
+                <div class="feature-image">
+                    <img src="{% static 'images/ai_assistant.png' %}" alt="AI Interview Assistant">
+                </div>
+            <h3>AI Assistant</h3>
+            <p>Get AI-powered guidance, explanations, and interview preparation whenever you need it.</p>
+            </div>
+            <div class="feature-card" id="feature-card-2">
+                <div class="feature-image">
+                    <img src="{% static 'images/mock_test.png' %}" alt="AI Interview Assistant">
+                </div>
+            <h3>Mock Tests</h3>
+            <p>Practice technical questions
+                with timed mock tests and
+                track your performance.</p>
+            </div>
+            <div class="feature-card" id="feature-card-3">
+                    <div class="feature-image">
+                    <img src="{% static 'images/resume.png' %}" alt="AI Interview Assistant">
+                </div>
+            <h3>Resume Management</h3>
+            <p>Upload and manage your latest resume in one place.</p>
+            </div>
+            <div class="feature-card" id="feature-card-4">
+                <div class="feature-image">
+                    <img src="{% static 'images/progress.png' %}" alt="AI Interview Assistant">
+                </div>
+            <h3>Progress Tracking</h3>
+            <p>Track your scores, completed tests, and preparation progress.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="how-it-works">
+            <div class="step-head">
+                <h2>How Hirevance Works</h2><br>
+                <p>Follow these simple steps to prepare, practice, and become interview-ready with confidence.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="number">01</div>
+                    <div class="icon">
+                        <img src="{%static 'images/profile_step.png'%}" alt="">
+                    </div>
+                    <h3 class="title">Create Your Profile</h3>
+                    <p class="description">
+                        Set up your profile with your skills, education, and personal details to build your interview-ready profile.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="number">02</div>
+                    <div class="icon">
+                        <img src="{% static 'images/mock_test_step.png'%}" alt="">
+                    </div>
+                    <h3 class="title">Practice Your Skills</h3>
+                    <p class="description">Take timed technical tests across different topics and difficulty levels to strengthen your preparation.</p>
+                </div>
+                <div class="step">
+                    <div class="number">03</div>
+                    <div class="icon">
+                        <img src="{% static 'images/progress_step.png'%}" alt="">
+                    </div>
+                    <h3 class="title">Learn & Improve</h3>
+                    <p class="description">Review your performance and use AI-powered guidance to understand concepts and improve weak areas.</p>
+                </div>
+                <div class="step">
+                    <div class="number">04</div>
+                    <div class="icon">
+                        <img src="{% static 'images/ready.png'%}" alt="">
+                    </div>
+                    <h3 class="title">Get Interview Ready</h3>
+                    <p class="description">Track your progress, manage your resume, and build confidence for real-world interviews.</p>
+                </div>
+            </div>
+    </section>
+
+    <section class="section" id="about">
+
+        <div class="about-content">
+            <div id="label"><h4>About Hirevance</h4></div>
+            <h1>Empowering You to Get <span>Interview Ready</span></h1>
+            <p>
+                Preparing for interviews can be challenging when learning resources, practice, and career preparation are scattered across different platforms. Hirevance brings these essentials together in one place, helping students build their skills, practice with mock tests, improve through AI-powered guidance, and stay prepared for real-world opportunities.
+            </p>
+            <div class="mission-box">
+                <img src="{% static 'images/mission_icon.png'%}" alt="">
+                <div>
+                    <h4>Our Mission</h4>
+                    <p>
+                        To make interview preparation more organized,
+                        effective,and accessible for everyone.
+                    </p>
+                </div>
+                
+            </div>
+            <a href="{% url 'dashboard' %}" ><button class="inter-btn primary-btn">Get Started</button></a>
+
+        </div>
+
+
+
+        <div class="about-visual">
+            <img src="{% static 'images/visual_image.png'%}" alt="">
+        </div>
+
+    </section>
+
+    <section class="section" id="contact">
+            <div class="contact-info">
+                <div id="contact-head">
+                <h2>Lets Connect</h2>
+                <p>Have a question or feedback?</p>
+                </div>
+                <div id="contact-way">
+                    <div class="way-sec">
+                        <div class="sec-icon">
+                            <img src="{% static 'images/email_icon.png' %}" alt="email" id="email-icon">
+                        </div>
+                        <div class="sec-para">
+                            <h4>Email us</h4>
+                            <a href="mailto:hirevance@gmai">hirevance@gmail.com</a>
+                            <p>Have a question or need assistance? Send us an email and we'll be happy to help.</p>
+                        </div>
+                    </div>
+                
+                    <div class="way-sec">
+                        <div class="sec-icon">
+                            <img src="{% static 'images/response.png' %}" alt="Response" id="response-logo">
+                        </div>
+                        <div class="sec-para">
+                          <h4>Quick Response</h4>
+                            <p>We aim to respond promptly and get back to you as soon as possible.</p>  
+                        </div>
+                    </div>
+                </div>
+                <div id="contact-way ">
+                    <div class="way-sec">
+                        <div class="sec-icon">
+                            <img src="{% static 'images/contact_icon.png' %}" alt="email" id="email-icon">
+                        </div>
+                        <div class="sec-para">
+                            <h4>We Value your feedback</h4>
+                            <p>Your feedback helps us improve Hirevance and create a better experience for you.</p>
+                        </div>
+                        <div class="sec-icon">
+                            <img src="{% static 'images/heart_icon.png' %}" alt="email" id="email-icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="contact-form">
+                    <div id="form-head">
+                    <h2>Send Us a Message </h2>
+                    <p>We'd love to hear from you. </p>
+                    </div>
+        <form class="form-content">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name"  placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message..."></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+
+        </form>       
+    </div>
+
+
+    </section>
+    
+    {% endblock content %}
+    

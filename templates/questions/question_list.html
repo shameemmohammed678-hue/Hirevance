@@ -1,0 +1,95 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/question.css' %}">
+
+<div class="questions-page">
+
+    <div class="questions-head">
+        <h2>Question Bank</h2>
+        <p>Practice interview questions and improve your knowledge</p>
+    </div>
+
+    <form method="GET" class="question-filters">
+
+        <select name="category" onchange="this.form.submit()">
+
+            <option value="">All Categories</option>
+
+            {% for category in categories %}
+
+                <option value="{{ category.id }}"
+                    {% if selected_category == category.id|stringformat:"s" %}
+                        selected
+                    {% endif %}>
+                    {{ category.name }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <select name="difficulty" onchange="this.form.submit()">
+
+            <option value="">All Difficulties</option>
+
+            <option value="Easy"
+                {% if selected_difficulty == "Easy" %}selected{% endif %}>
+                Easy
+            </option>
+
+            <option value="Medium"
+                {% if selected_difficulty == "Medium" %}selected{% endif %}>
+                Medium
+            </option>
+
+            <option value="Hard"
+                {% if selected_difficulty == "Hard" %}selected{% endif %}>
+                Hard
+            </option>
+
+        </select>
+
+    </form>
+
+
+    <div class="questions-container">
+
+        {% for question in questions %}
+
+            <div class="question-card">
+
+                <div class="question-top">
+
+                    <span class="question-category">
+                        {{ question.category.name }}
+                    </span>
+
+                    <span class="question-difficulty">
+                        {{ question.difficulty }}
+                    </span>
+
+                </div>
+
+                <a href="{% url 'question-detail' question.id %}">
+                    <h3>{{ question.question_text }}</h3>
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <div class="no-questions">
+                <p>No questions found.</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

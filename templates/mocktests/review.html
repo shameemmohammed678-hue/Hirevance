@@ -1,0 +1,109 @@
+{% extends 'mocktests/test_base.html' %}
+
+{% block title %}
+Review Answers
+{% endblock %}
+
+{% block content %}
+
+<div class="review-container">
+
+    <div class="review-header">
+        <h1>Review Answers</h1>
+        <p>{{ attempt.mock_test.title }}</p>
+    </div>
+
+    {% for item in review_data %}
+
+        <div class="review-card">
+
+            <div class="review-question-number">
+                Question {{ forloop.counter }}
+            </div>
+
+            <div class="review-question">
+                {{ item.question.question_text }}
+            </div>
+
+            {% if item.user_answer %}
+
+                <div class="your-answer">
+
+                    <strong>Your Answer:</strong>
+
+                    <span>
+                        {{ item.user_answer.selected_option.option_text }}
+                    </span>
+
+                </div>
+
+                {% if item.user_answer.selected_option.is_correct %}
+
+                    <div class="answer-status correct">
+                        ✓ Correct
+                    </div>
+
+                {% else %}
+
+                    <div class="answer-status wrong">
+                        ✗ Wrong
+                    </div>
+
+                {% endif %}
+
+            {% else %}
+
+                <div class="your-answer unanswered">
+
+                    <strong>Your Answer:</strong>
+
+                    <span>
+                        Not Answered
+                    </span>
+
+                </div>
+
+            {% endif %}
+
+
+            <div class="correct-answer">
+
+                <strong>Correct Answer:</strong>
+
+                <span>
+                    {{ item.correct_answer.option_text }}
+                </span>
+
+            </div>
+
+
+            <div class="review-explanation">
+
+                <strong>Explanation:</strong>
+
+                <p>
+                    {{ item.question.explanation }}
+                </p>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+
+    <div class="review-actions">
+
+        <a href="{% url 'test-result' attempt.id %}">
+            Back to Result
+        </a>
+
+        <a href="{% url 'mock-test' %}">
+            Back to Mock Tests
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

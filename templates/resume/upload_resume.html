@@ -1,0 +1,61 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/resume.css' %}">
+
+<div class="resume-head">
+    <h2>
+    {% if form.instance.pk %}
+        Replace Your Resume
+    {% else %}
+        Upload Your Resume
+    {% endif %}
+</h2>
+
+    <p>
+        {% if form.instance.pk %}
+              Upload a new version of your resume.
+        {% else %}
+              Upload your latest resume to manage and analyze it.
+        {% endif %}
+    </p>
+</div>
+
+<div class="resume-container">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="resume-upload-card">
+
+            <div class="resume-icon">
+                📄
+            </div>
+
+            <h3>Upload Your Resume</h3>
+
+            <p>
+                Upload your latest resume to manage and analyze it.
+            </p>
+
+            <div class="resume-file">
+                {{ form.resume }}
+            </div>
+
+            <small>
+                Supported formats: PDF, DOC, DOCX
+            </small>
+
+            <button type="submit">
+                Upload Resume
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
