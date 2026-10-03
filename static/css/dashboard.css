@@ -1004,5 +1004,551 @@ html{
     scroll-behavior: smooth;
 }
 
+@media (max-width: 1100px) {
+
+    .dashboard {
+        grid-template-columns: 230px 1fr;
+    }
+
+    .dashboard-body {
+        padding: 18px;
+    }
+
+    .activity-container {
+        gap: 14px;
+    }
+
+    .activity-card {
+        width: 33.333%;
+        padding: 8px;
+    }
+
+    .act-icon {
+        width: 25%;
+    }
+
+    .act-icon img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .act-content {
+        width: 75%;
+        padding: 12px;
+    }
+
+    .act-content h3 {
+        font-size: 16px;
+    }
+
+    .act-content p {
+        font-size: 12px;
+    }
+
+    .progress-container {
+        gap: 15px;
+    }
+
+    .recent-activity {
+        width: 35%;
+        padding: 15px;
+    }
+
+    .recommend-card {
+        width: 25%;
+    }
+
+    .profile-container,
+    .test-container {
+        padding: 25px;
+    }
+
+    .test-body {
+        gap: 15px;
+    }
+
+    .test-card {
+        padding: 18px;
+        gap: 15px;
+    }
+}
 
 
+@media (max-width: 850px) {
+
+    .dashboard {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .side-bar {
+        position: relative;
+        top: auto;
+        width: 100%;
+        height: 62px;
+        min-height: 62px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-right: none;
+        border-bottom: 1px solid #1e293b;
+        background-color: #0f172a;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        z-index: 10;
+    }
+
+    .side-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .dash-logo {
+        width: 125px;
+        min-width: 125px;
+        height: 62px;
+        padding: 0 14px;
+        border-bottom: none;
+        border-right: 1px solid #1e293b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .dash-logo img {
+        width: 105px;
+        height: auto;
+    }
+
+    .side-bar-links {
+        width: max-content;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        flex-shrink: 0;
+    }
+
+    .side-bar-links > a {
+        width: auto;
+        min-width: max-content;
+        height: 62px;
+        padding: 0 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border-radius: 0;
+        color: #cbd5e1;
+        font-size: 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .side-icon {
+        width: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .side-icon svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .quick-actions {
+        width: max-content;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        flex-shrink: 0;
+    }
+
+    .quick-actions > a {
+        width: auto;
+        min-width: max-content;
+        height: 62px;
+        padding: 0 13px;
+        border: none;
+        border-left: 1px solid #1e293b;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cbd5e1;
+        font-size: 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .side-bar-links > a:hover,
+    .quick-actions > a:hover {
+        background: #1e293b;
+    }
+
+    .dashboard-content {
+        width: 100%;
+        min-width: 0;
+        border: none;
+    }
+
+    .dashboard-header {
+        width: 100%;
+        height: 65px;
+    }
+
+    .profile-card {
+        width: 44px;
+        height: 44px;
+        margin-right: 18px;
+    }
+
+    .dashboard-body {
+        width: 100%;
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .dashboard-headings {
+        width: 100%;
+    }
+
+    .activity-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .activity-card {
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+    }
+
+    .act-icon {
+        width: 30%;
+    }
+
+    .act-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .act-content {
+        width: 70%;
+        padding: 8px;
+        gap: 6px;
+    }
+
+    .act-content > a {
+        padding: 7px 11px;
+        font-size: 11px;
+    }
+
+    .progress-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .recent-activity {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .recommendation-container {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .recommendation-container > div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .recommend-card {
+        width: 100%;
+    }
+
+    .progress-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .progress-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .profile-container,
+    .test-container {
+        padding: 22px;
+    }
+
+    .profile-form {
+        max-width: 100%;
+    }
+
+    .test-body {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .test-card {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .test-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .test-icon img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .side-bar {
+        height: 56px;
+        min-height: 56px;
+    }
+
+    .dash-logo {
+        width: 105px;
+        min-width: 105px;
+        height: 56px;
+        padding: 0 10px;
+    }
+
+    .dash-logo img {
+        width: 90px;
+    }
+
+    .side-bar-links {
+        width: max-content;
+    }
+
+    .side-bar-links > a {
+        height: 56px;
+        padding: 0 11px;
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .side-icon {
+        width: 16px;
+    }
+
+    .side-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .quick-actions {
+        width: max-content;
+    }
+
+    .quick-actions > a {
+        height: 56px;
+        padding: 0 11px;
+        border-left: 1px solid #1e293b;
+        font-size: 11px;
+    }
+
+    .dashboard-header {
+        height: 58px;
+    }
+
+    .profile-card {
+        width: 40px;
+        height: 40px;
+        margin-right: 13px;
+    }
+
+    .dashboard-body {
+        padding: 14px;
+        gap: 15px;
+    }
+
+    .dashboard-headings {
+        min-height: 120px;
+        padding: 20px;
+    }
+
+    .activity-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .activity-card {
+        width: 100%;
+        min-height: 95px;
+    }
+
+    .progress-container {
+        gap: 15px;
+    }
+
+    .recent-activity {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .recommendation-container {
+        padding: 15px;
+    }
+
+    .recommendation-container > div {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .recommend-card {
+        width: 100%;
+        height: 100px;
+    }
+
+    .progress-card {
+        padding: 16px;
+    }
+
+    .progress-stats {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .weekly-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .profile-container {
+        padding: 18px 14px;
+    }
+
+    .profile-form {
+        padding: 18px;
+    }
+
+    .profile-picture-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-picture-upload {
+        width: 100%;
+    }
+
+    .profile-form button[type="submit"] {
+        width: 100%;
+    }
+
+    .test-container {
+        padding: 18px 14px;
+    }
+
+    .test-body {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .test-card {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .side-bar {
+        height: 52px;
+        min-height: 52px;
+    }
+
+    .dash-logo {
+        width: 90px;
+        min-width: 90px;
+        height: 52px;
+        padding: 0 8px;
+    }
+
+    .dash-logo img {
+        width: 78px;
+    }
+
+    .side-bar-links > a {
+        height: 52px;
+        padding: 0 9px;
+        font-size: 10px;
+        gap: 5px;
+    }
+
+    .quick-actions > a {
+        height: 52px;
+        padding: 0 9px;
+        font-size: 10px;
+    }
+
+    .side-icon {
+        display: none;
+    }
+
+    .dashboard-body {
+        padding: 10px;
+    }
+
+    .dashboard-headings {
+        min-height: 115px;
+        padding: 16px;
+    }
+
+    .activity-card {
+        min-height: 88px;
+    }
+
+    .recent-activity {
+        padding: 12px;
+    }
+
+    .progress-card {
+        padding: 13px;
+    }
+
+    .profile-form {
+        padding: 15px;
+    }
+
+    .test-card {
+        padding: 12px;
+    }
+
+    .test-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .test-icon img {
+        width: 38px;
+        height: 38px;
+    }
+}
