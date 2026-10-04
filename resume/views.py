@@ -38,7 +38,7 @@ def resume_home(request):
           return render(request,'resume/resume_home.html',{'resume':resume})
 
      else:
-          return redirect('upload-resume')
+          return redirect('resume-upload')
 
 
 @login_required
