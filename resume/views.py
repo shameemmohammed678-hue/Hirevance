@@ -10,7 +10,6 @@ from .models import Resume,ResumeAnalysis
 def upload_Resume(request):
 
     resume = Resume.objects.filter(user = request.user).first()
-
     if resume:
         return redirect('resume-home')
 
